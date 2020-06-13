@@ -6,11 +6,12 @@ const instance = axios.create({
 
 exports.registerUser = async (user) => {
     try {
+        console.log(user);
         const {data} = await instance.post('/users',{
             name: user.name,
-            age: user.age,
             email: user.email,
-            password: user.password
+            password: user.password,
+            address: user.address
         })
         return data;
     } catch (e) {
