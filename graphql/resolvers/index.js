@@ -11,12 +11,18 @@ const resolvers = {
           const users =   fetchUsers();
           return users;
         },
-        products: (parent, args, context) => {
+        products: async (parent, args, context) => {
             const {me} = context;
             console.log('---me----',me);            
-          const users =   fetchAllProducts();
-          return users;
-        }
+            const products =   await fetchAllProducts();
+            return products;
+        },
+        product: async (parent, args, context) => {
+            const {me} = context;
+            console.log('---me----',me);            
+          const product =  await fetchProductById(args.id);
+          return product;
+        },
     },
     Mutation: {
         registerCutomer: async (parent, args) => {

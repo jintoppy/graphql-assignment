@@ -3,7 +3,8 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
   type Query {
     customers: [Customer],
-    products: [Product]
+    products: [Product],
+    product(id: ID!): Product
   }
 
   type Mutation {
