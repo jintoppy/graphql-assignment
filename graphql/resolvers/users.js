@@ -43,3 +43,14 @@ console.error('---error fetching users--',e);
       throw e;
 }
 }
+
+
+exports.fetchUserById = async (id) => {
+    try {
+        const {data} = await instance.get(`/users/${id}`);
+        return data;
+    } catch (e) {
+    console.error('---error fetching users --',e);
+        throw e;
+    }
+};

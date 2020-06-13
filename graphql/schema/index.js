@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Query {
     customers: [Customer],
     products: [Product],
+    orders: [Order],
     product(id: ID!): Product
   }
 
@@ -45,6 +46,20 @@ const typeDefs = gql`
     price: Float!
   }
 
+  type Order {
+    id: ID!,
+    customer: Customer,
+    totalOrderValue: Float,
+    shippingAddress: String,
+    paymentMethod: String,
+    products: [OrderProduct]
+  }
+
+  type OrderProduct {
+    product: Product,
+    quantity: Int,
+    price: Float
+  }
 
   
 `;

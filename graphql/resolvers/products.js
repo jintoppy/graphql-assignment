@@ -30,7 +30,7 @@ exports.fetchAllProducts = async () => {
 
 exports.fetchProductById = async (id) => {
     try {
-        const {data} = await instance.get(`/products/${id}`);
+        const {data} = await instance.get(`/products/${id}`);        
         return data;
     } catch (e) {
     console.error('---error fetching products--',e);

@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server");
 const { fetchUsers, registerUser, login } = require('./users');
 const { addProduct, fetchAllProducts, fetchProductById } = require('./products');
+const { getAllOrders } = require('./orders');
 
 // Provide resolver functions for your schema fields
 const resolvers = {
@@ -22,6 +23,12 @@ const resolvers = {
             console.log('---me----',me);            
           const product =  await fetchProductById(args.id);
           return product;
+        },
+        orders: async (parent, args, context) => {
+            const {me} = context;
+            console.log('---me----',me);            
+          const orders =  await getAllOrders();
+          return orders;
         },
     },
     Mutation: {
